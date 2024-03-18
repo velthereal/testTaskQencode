@@ -1,0 +1,24 @@
+.form {
+	width: 400px;
+	margin: 0 auto;
+	padding: 7.5rem 0 1.25rem 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.form h1 {
+	margin: 5rem 0 2.5rem 0;
+	font-size: 1.875rem;
+	font-family: 'BasisGrotesquePro-Bold';
+	text-align: center;
+}
+@media screen and (max-width: 26.625em) {
+	.form {
+		width: 18.75rem;
+		padding: 5rem 0 1.25rem 0;
+	}
+	.form h1 {
+		margin: 3.125rem 0 1.875rem 0;
+		font-size: 1.5rem;
+	}
+}

@@ -2,8 +2,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 30px;
-	font-size: 12px;
+	margin-bottom: 1.875rem;
+	font-size: 0.75rem;
 	color: #BEC5CC;
 	font-family: 'BasisGrotesquePro-Medium';
 	text-transform: uppercase;
@@ -11,16 +11,29 @@
 .or::before {
 	content: '';
 	display: block;
-	width: 186px;
-	height: 1px;
-	margin-right: 5px;
+	width: 11.625rem;
+	height: 0.0625rem;
+	margin-right: 0.3125rem;
 	background-color: #BEC5CC;
 }
 .or::after {
 	content: '';
 	display: block;
-	width: 186px;
-	height: 1px;
-	margin-left: 5px;
+	width: 11.625rem;
+	height: 0.0625rem;
+	margin-left: 0.3125rem;
 	background-color: #BEC5CC;
+}
+@media screen and (max-width: 26.625em) {
+	.or {
+		margin-bottom: 1.25rem;
+	}
+	.or::before {
+		content: '';
+		width: 8.125rem;
+	}
+	.or::after {
+		content: '';
+		width: 8.125rem;
+	}
 }

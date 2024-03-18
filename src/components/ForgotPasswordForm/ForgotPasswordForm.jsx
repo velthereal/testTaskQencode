@@ -1,15 +1,15 @@
 import styles from './forgot-password-form.module.css';
 
-import Logo from '../Logo';
+import FormComponent from '../FormComponent';
 import Button from "../Button";
 import Input from "../Input";
 
 const ForgotPasswordForm = () => {
 	return(
-		<div className={styles.forgotPass_form}>
-			<Logo />
+		<FormComponent
+			headingText='Forgot Password?'
+			className={styles.forgotPass_form}>
 			<form action="">
-				<h1>Forgot Password?</h1>
 				<Input
 					type='email'
 					placeholder='Enter your email'
@@ -26,7 +26,7 @@ const ForgotPasswordForm = () => {
 					color='grey'
 					/*onClick={() => onClickFunction  && onClickFunction() }*/ />
 			</form>
-		</div>
+		</FormComponent>
 	)
 }
 
