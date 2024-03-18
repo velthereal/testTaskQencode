@@ -5,6 +5,7 @@ button {
 	border-radius: 8px;
 	font-size: 16px;
 	font-family: 'BasisGrotesquePro-Medium';
+	cursor: pointer;
 }
 .blue {
 	background-color: #316FEA;

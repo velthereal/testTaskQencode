@@ -1,7 +1,7 @@
 .login_form {
 	width: 400px;
 	margin: 0 auto;
-	padding: 180px 0 20px 0;
+	padding-top: 180px 0 20px 0;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
