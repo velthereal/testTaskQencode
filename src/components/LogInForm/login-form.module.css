@@ -1,0 +1,46 @@
+.login_form {
+	width: 400px;
+	margin: 0 auto;
+	padding: 180px 0 20px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.login_form h1 {
+	margin: 80px 0 0 0;
+	font-size: 30px;
+	font-family: 'BasisGrotesquePro-Bold';
+	text-align: center;
+}
+.login_with {
+	width: 400px;
+	margin: 40px 0 30px 0;
+	display: flex;
+	justify-content: space-between;
+}
+.login_with button {
+	width: 192px;
+	height: 48px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	cursor: pointer;
+}
+.login_with button img {
+	margin-right: 10px;
+}
+.login_btn {
+	margin: 20px 0;
+}
+.signup_q {
+	margin: 0;
+	font-size: 16px;
+	color: #060E1E;
+	font-family: 'BasisGrotesquePro-Regular';
+}
+.signup_q span {
+	font-family: 'BasisGrotesquePro-Medium';
+	color: #316FEA;
+}

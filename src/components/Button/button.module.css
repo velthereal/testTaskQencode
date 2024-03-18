@@ -1,0 +1,18 @@
+button {
+	box-sizing: border-box;
+	width: 400px;
+	height: 48px;
+	border-radius: 8px;
+	font-size: 16px;
+	font-family: 'BasisGrotesquePro-Medium';
+}
+.blue {
+	background-color: #316FEA;
+	border: none;
+	color: #fff;
+}
+.grey {
+	background-color: #fff;
+	border: 1.2px solid #D3D8DC;
+	color: #060E1E;
+}
