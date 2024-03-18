@@ -6,18 +6,24 @@ import ResetPasswordForm from './components/ResetPasswordForm';
 
 import { Routes, Route } from "react-router";
 
-import { FORGOT_PASSWORD_PATH } from './constants/pathNames';
+import { FORGOT_PASSWORD_PATH, LOGIN_PATH, RESET_PASSOWRD_PATH } from './constants/pathNames';
 
 function App() {
   return (
-    <div className="App">
-		<LogInForm />
-		{/* <ResetPasswordForm /> */}
+    <div>
 		<Routes>
-          <Route
-            path={FORGOT_PASSWORD_PATH}
-            element={<ForgotPasswordForm />}
-          />
+			<Route
+				path={LOGIN_PATH}
+				element={<LogInForm />}
+			/>
+			<Route
+				path={FORGOT_PASSWORD_PATH}
+				element={<ForgotPasswordForm />}
+			/>
+			<Route
+				path={RESET_PASSOWRD_PATH}
+				element={<ResetPasswordForm />}
+			/>
         </Routes>
 	</div>
   );

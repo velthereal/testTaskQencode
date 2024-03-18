@@ -38,7 +38,7 @@ const LogInForm = () => {
 		setPassword(value);
 		setErrors({ ...errors, password: !validatePassword(value) });
 	};
-	const onSubmitData = (e) => {
+	const onSubmitData = async (e) => {
 		e.preventDefault();
 
 		const emailError = !validateEmail(email);
@@ -47,7 +47,31 @@ const LogInForm = () => {
 		setErrors({ email: emailError, password: passwordError });
 
 		if(!emailError && !passwordError){
+			try {
+                const response = await fetch('https://auth-qa.qencode.com/v1/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        password: password
+                    })
+                });
 
+                const data = await response.json();
+
+                if (data && data.access_token) {
+                    // Redirect to dashboard or any other page upon successful login
+                    navigator('/dashboard');
+                } else {
+                    // Handle invalid login
+                    console.log('Invalid credentials');
+                }
+            } catch (error) {
+                // Handle error
+                console.error('Error occurred:', error);
+            }
 		}
 	};
 
@@ -89,7 +113,7 @@ const LogInForm = () => {
 							error={errors.password}
 							errorMessage="*Password must contain at least 8 characters"
 						/>
-						<p onClick={navigator(FORGOT_PASSWORD_PATH)} className={styles.forgotPass}>Forgot your password?</p>
+						<p onClick={() => {navigator(FORGOT_PASSWORD_PATH)}} className={styles.forgotPass}>Forgot your password?</p>
 				   </div>
                 )}
 				<Button

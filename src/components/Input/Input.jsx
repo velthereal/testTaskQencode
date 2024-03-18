@@ -7,7 +7,7 @@ const Input = (props) => {
   	const inputClass = error ?  styles.errorInput : "";
 
   	return (
-		<>
+		<div className={styles.input}>
 			<input
 				type={type || "text"}
 				placeholder={placeholder}
@@ -15,7 +15,7 @@ const Input = (props) => {
 				onChange={(event) => onChangeFunction(event.target.value) }
 				className={inputClass} />
 			{error && <p className={styles.errorMessage}>{errorMessage}</p>}
-		</>
+		</div>
 	);
 }
 
