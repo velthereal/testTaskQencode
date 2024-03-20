@@ -12,6 +12,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import { FORGOT_PASSWORD_PATH } from '../../constants/pathNames';
+import { LOGIN_ENDPOINT } from '../../constants/endpoints';
+import { createRequestPath } from '../../helpers/helpers';
 
 const LogInForm = () => {
 	const navigator = useNavigate();
@@ -20,6 +22,8 @@ const LogInForm = () => {
 	const [password, setPassword] = useState('');
 	const [showPasswordInput, setShowPasswordInput] = useState(false);
 	const [errors, setErrors] = useState({ email: false, password: false });
+	const [message, setMessage] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const validateEmail = (email) => {
 		return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -48,7 +52,8 @@ const LogInForm = () => {
 
 		if(!emailError && !passwordError){
 			try {
-                const response = await fetch('https://auth-qa.qencode.com/v1/auth/login', {
+                setLoading(true); // Set loading state
+                const response = await fetch(createRequestPath(LOGIN_ENDPOINT), {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -58,19 +63,27 @@ const LogInForm = () => {
                         password: password
                     })
                 });
-
-                const data = await response.json();
-
-                if (data && data.access_token) {
-                    // Redirect to dashboard or any other page upon successful login
-                    navigator('/dashboard');
+				const data = await response.json();
+                if (response.status === 200) {
+                    if (data && data.access_token) {
+                        setMessage(`Welcome back, ${email}!`);
+                        console.log('valid credentials');
+                        // Redirect to dashboard on successful login
+                        // navigator(DASHBOARD_PATH);
+                    } else {
+                        setMessage(`Failed to log in`);
+                        console.log('Invalid response data');
+                    }
                 } else {
-                    // Handle invalid login
-                    console.log('Invalid credentials');
+                    console.log('HTTP Error:', response.status);
+                    setMessage('Failed to log in. Please try again later.');
                 }
             } catch (error) {
                 // Handle error
                 console.error('Error occurred:', error);
+                setMessage('An error occurred. Please try again later.');
+            } finally {
+                setLoading(false); // Reset loading state
             }
 		}
 	};
@@ -96,7 +109,6 @@ const LogInForm = () => {
 				</div>
 				<OrComponent />
 				<Input
-					type='email'
 					placeholder='Work email'
 					value={email}
 					onChangeFunction={onGetEmail}
@@ -120,6 +132,7 @@ const LogInForm = () => {
 					title='Log in to Qencode'
 					type='submit'
 					className={styles.login_btn} />
+				{message && <p className={styles.message}>{message}</p>}
 				<p className={styles.signup_q}>Is your company new to Qencode? <span>Sign up</span></p>
 			</form>
 		</FormComponent>

@@ -1,5 +1,6 @@
 .input {
 	margin-bottom: 15px;
+	position: relative;
 }
 input {
 	box-sizing: border-box;
@@ -34,6 +35,17 @@ input:focus-visible {
 	font-family: 'BasisGrotesquePro-Regular';
 	color: red;
 	font-weight: 600;
+}
+.notPassword {
+	display: none;
+}
+.passwordClass {
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	top: 14px;
+	right: 15px;
 }
 
 @media screen and (max-width: 26.625em) {
